@@ -1,12 +1,14 @@
 package com.latihanbuku.latihanbuku.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.*;
@@ -17,6 +19,7 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
+
 public class Book {
 
     @Id
@@ -35,4 +38,6 @@ public class Book {
     @Column(name = "is_deleted")
     private Boolean isDeleted;
 
+    @OneToMany(mappedBy = "book")
+    private List<Chapter> chapterList;
 }

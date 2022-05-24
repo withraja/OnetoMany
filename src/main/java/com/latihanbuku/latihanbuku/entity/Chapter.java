@@ -1,16 +1,19 @@
 package com.latihanbuku.latihanbuku.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.*;
 
 @Entity
-@Table(name = "book")
+@Table(name = "chapter")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -27,8 +30,9 @@ public class Chapter {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "book_id")
-    private Long bookId;
+    @ManyToOne(cascade = CascadeType.PERSIST, optional = true)
+    @JoinColumn(name = "book_id")
+    private Book book;
 
     @Column(name = "is_deleted")
     private Boolean isDeleted;
