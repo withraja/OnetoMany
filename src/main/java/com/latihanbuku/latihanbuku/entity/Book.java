@@ -1,6 +1,5 @@
 package com.latihanbuku.latihanbuku.entity;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -33,7 +32,7 @@ public class Book {
     private String author;
 
     @Column(name = "year")
-    private Date year;
+    private String year;
 
     @Column(name = "is_deleted")
     private Boolean isDeleted;

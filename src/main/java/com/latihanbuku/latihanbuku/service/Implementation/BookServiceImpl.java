@@ -11,7 +11,9 @@ import com.latihanbuku.latihanbuku.repository.BookRepository;
 import com.latihanbuku.latihanbuku.service.BookService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BookServiceImpl implements BookService {
 
     @Autowired
@@ -33,6 +35,7 @@ public class BookServiceImpl implements BookService {
             chapter.setName(chapterDTO.getName());
             chapter.setContent(chapterDTO.getContent());
             chapter.setIsDeleted(false);
+            chapter.setBook(book);
             chapterList.add(chapter);
         }
         book.setChapterList(chapterList);
@@ -49,6 +52,7 @@ public class BookServiceImpl implements BookService {
         List<ChapterDTO> chapterDTOList = new ArrayList<>();
         for (Chapter chapter : bookCreated.getChapterList()) {
             ChapterDTO chapterDTO = new ChapterDTO();
+            chapterDTO.setId(chapter.getId());
             chapterDTO.setName(chapter.getName());
             chapterDTO.setContent(chapter.getContent());
             chapterDTO.setIsDeleted(false);
